@@ -42,7 +42,7 @@ You can preview the production build with `npm run preview`.
 - [ ] Tailwind
 - [ ] SignIn
 - [ ] SignUp
+- [ ] Navbar
 - [ ] Authenticated Home Route
 - [ ] User pool
 - [ ] Cognito
-- [ ] Amplify (Deploy)
