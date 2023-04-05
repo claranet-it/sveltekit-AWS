@@ -44,5 +44,5 @@ You can preview the production build with `npm run preview`.
 - [ ] SignUp
 - [ ] Navbar
 - [ ] Authenticated Home Route
-- [ ] User pool
+- [X] User pool
 - [ ] Cognito
