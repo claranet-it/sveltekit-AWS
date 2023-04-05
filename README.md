@@ -39,7 +39,7 @@ You can preview the production build with `npm run preview`.
 
 ### TODO
 
-- [ ] Tailwind
+- [X] Tailwind
 - [ ] SignIn
 - [ ] SignUp
 - [ ] Navbar
