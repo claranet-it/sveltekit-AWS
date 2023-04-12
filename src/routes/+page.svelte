@@ -1,5 +1,6 @@
 <script>
 	import SignIn from '../components/SignIn/SignIn.svelte';
+	import SignUp from '../components/SignUp/SignUp.svelte';
 </script>
 
 <svelte:head>
@@ -7,4 +8,4 @@
 	<meta name="description" content="SignIn" />
 </svelte:head>
 
-<SignIn />
+<SignUp />
