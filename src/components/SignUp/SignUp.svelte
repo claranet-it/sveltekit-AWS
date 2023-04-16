@@ -1,10 +1,6 @@
-<script>
+<script lang="ts">
 	import Avatar from "../avatar/Avatar.svelte";
 	let closeEyes = false;
-
-	function onSubmit() {
-		console.log("submit");
-	}
 </script>
 
 <svelte:head>

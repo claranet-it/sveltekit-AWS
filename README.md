@@ -39,10 +39,12 @@ You can preview the production build with `npm run preview`.
 
 ### TODO
 
-- [X] Tailwind
-- [X] SignIn
-- [ ] SignUp
+- [x] Tailwind
+- [x] SignIn
+- [x] SignUp
+- [ ] Confirm account UI (with code)
+- [ ] Navigation
 - [ ] Navbar
 - [ ] Authenticated Home Route
-- [X] User pool
-- [ ] Cognito
+- [x] User pool
+- [x] Cognito Configuration
