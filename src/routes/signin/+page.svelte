@@ -1,5 +1,6 @@
 <script>
-	import Avatar from "../avatar/Avatar.svelte";
+	import Avatar from '../../components/avatar/Avatar.svelte';
+
 	let closeEyes = false;
 </script>
 
@@ -47,8 +48,8 @@
 								type="password"
 								class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
 								placeholder="Password"
-								on:focus={()=> closeEyes = true }
-								on:blur={()=> closeEyes = false }
+								on:focus={() => (closeEyes = true)}
+								on:blur={() => (closeEyes = false)}
 							/>
 							<label
 								for="password"

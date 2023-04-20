@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Avatar from "../avatar/Avatar.svelte";
+	import Avatar from '../../components/avatar/Avatar.svelte';
 	import type { ActionData } from './$types';
 
 	let closeEyes = false;
@@ -28,7 +28,11 @@
 				</div>
 				<div class="divide-y divide-gray-200">
 					<pre>{JSON.stringify(form)}</pre>
-					<form class="pt-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7" method="POST" action="?/signUp">
+					<form
+						class="pt-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7"
+						method="POST"
+						action="?/signUp"
+					>
 						<div class="relative">
 							<input
 								autocomplete="off"
@@ -67,8 +71,8 @@
 								type="password"
 								class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
 								placeholder="Password"
-								on:focus={()=> closeEyes = true }
-								on:blur={()=> closeEyes = false }
+								on:focus={() => (closeEyes = true)}
+								on:blur={() => (closeEyes = false)}
 							/>
 							<label
 								for="password"

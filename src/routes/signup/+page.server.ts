@@ -15,8 +15,8 @@ export const actions = {
 		// 	console.log('Trying to sign up')
 		// 	signUp(user.email, user.name, user.password);
 
-		// } catch(e) {			
-			return fail(400, {error: 'to confirm' });
+		// } catch(e) {
+		return fail(400, { error: 'to confirm' });
 		// }
 	},
 	confirm: async ({ request }) => {
@@ -28,6 +28,6 @@ export const actions = {
 
 		confirm(user.email, user.code);
 
-		return fail(400, {error: 'confirm' });
+		return fail(400, { error: 'confirm' });
 	}
 } satisfies Actions;
