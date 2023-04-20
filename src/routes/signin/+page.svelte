@@ -2,6 +2,8 @@
 	import Avatar from '../../components/avatar/Avatar.svelte';
 
 	let closeEyes = false;
+
+	export let form;
 </script>
 
 <svelte:head>
@@ -24,7 +26,12 @@
 					<h1 class="text-2xl font-semibold">Enter your user and password</h1>
 				</div>
 				<div class="divide-y divide-gray-200">
-					<div class="pt-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+					<pre>{JSON.stringify(form)}</pre>
+					<form
+						class="pt-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7"
+						method="POST"
+						action="?/signIn"
+					>
 						<div class="relative">
 							<input
 								autocomplete="off"
@@ -60,7 +67,7 @@
 						<div class="relative text-center">
 							<button class="bg-blue-500 text-white rounded-md m-2 p-4 w-[100px]">SignIn</button>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
