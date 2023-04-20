@@ -42,7 +42,9 @@ You can preview the production build with `npm run preview`.
 - [x] Tailwind
 - [x] SignIn
 - [x] SignUp
-- [ ] Confirm account UI (with code)
+- [x] Confirm account
+- [ ] Handle confirm account error on signIn
+- [ ] Redirect to confirm after signUp
 - [ ] Navigation
 - [ ] Navbar
 - [ ] Authenticated Home Route

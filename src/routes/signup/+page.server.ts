@@ -11,13 +11,13 @@ export const actions = {
 			password: data.get('password') as string
 		};
 
-		// try {
-		// 	console.log('Trying to sign up')
-		// 	signUp(user.email, user.name, user.password);
-
-		// } catch(e) {
-		return fail(400, { error: 'to confirm' });
-		// }
+		try {
+			console.log('Trying to sign up');
+			signUp(user.email, user.name, user.password);
+			return { success: true };
+		} catch (e) {
+			return fail(400, { error: 'to confirm' });
+		}
 	},
 	confirm: async ({ request }) => {
 		const data = await request.formData();
