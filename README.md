@@ -48,5 +48,6 @@ You can preview the production build with `npm run preview`.
 - [ ] Navigation
 - [x] Navbar
 - [ ] Authenticated Home Route
+- [ ] Logout
 - [x] User pool
 - [x] Cognito Configuration
