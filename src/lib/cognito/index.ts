@@ -64,7 +64,7 @@ export async function signIn(email: string, password: string): Promise<void> {
 		const cognitoUser = new CognitoUser(userData);
 		cognitoUser.authenticateUser(authenticationDetails, {
 			onSuccess: (result) => {
-				console.log('Sign in success: ', result);
+				//console.log('Sign in success: ', result);
 				resolve();
 			},
 			onFailure: (err) => {
