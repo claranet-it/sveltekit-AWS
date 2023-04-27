@@ -5,15 +5,13 @@ import type { Actions } from './$types';
 export const actions = {
 	signIn: async ({ request, cookies }) => {
 		const data = await request.formData();
-		console.log('*****Data: ', data);
 		const email = data.get('email') as string;
 		const password = data.get('password') as string;
 
 		try {
-			console.log('Trying to sign in');
-			await signIn(email, password);
+			const idToken = await signIn(email, password);
 
-			cookies.set('session', email, {
+			cookies.set('session', idToken, {
 				path: '/',
 				httpOnly: true,
 				sameSite: 'strict',
@@ -24,7 +22,10 @@ export const actions = {
 			return { signin: true };
 		} catch (e: any) {
 			console.log('Error: ', e);
-			return fail(400, { error: e?.message ?? 'error' });
+			return fail(400, {
+				signin: false,
+				error: e?.message ?? 'error'
+			});
 		}
 	}
 } satisfies Actions;
