@@ -1,5 +1,5 @@
 import { signIn } from '$lib/cognito';
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const actions = {
@@ -15,17 +15,15 @@ export const actions = {
 				path: '/',
 				httpOnly: true,
 				sameSite: 'strict',
-				secure: false,
+				secure: false,	// TODO: set to true in production
 				maxAge: 60 * 60 * 24 * 30
 			});
-
-			return { signin: true };
 		} catch (e: any) {
-			console.log('Error: ', e);
 			return fail(400, {
-				signin: false,
-				error: e?.message ?? 'error'
+				error: e?.message ?? 'login error'
 			});
 		}
+
+		throw redirect(303, '/');
 	}
 } satisfies Actions;
