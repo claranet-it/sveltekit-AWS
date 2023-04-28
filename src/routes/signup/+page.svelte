@@ -27,6 +27,9 @@
 					<h1 class="text-2xl font-semibold">Enter your user and password</h1>
 				</div>
 				<div class="divide-y divide-gray-200">
+					{#if form?.error}
+						<div class="text-red-500 text-sm">{form.error}</div>
+					{/if}
 					<form
 						class="pt-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7"
 						method="POST"

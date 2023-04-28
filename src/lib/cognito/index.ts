@@ -13,7 +13,7 @@ const poolData = {
 };
 const userPool = new CognitoUserPool(poolData);
 
-export async function signUp(email: string, name: string, password: string): Promise<void> {
+export async function signUp(email: string, name: string, password: string): Promise<boolean> {
 	return new Promise((resolve, reject) => {
 		userPool.signUp(
 			email,
@@ -29,7 +29,7 @@ export async function signUp(email: string, name: string, password: string): Pro
 				if (!result) {
 					reject(err);
 				} else {
-					resolve();
+					resolve(result.userConfirmed);
 				}
 			}
 		);

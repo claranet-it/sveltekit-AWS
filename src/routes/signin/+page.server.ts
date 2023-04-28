@@ -15,12 +15,12 @@ export const actions = {
 				path: '/',
 				httpOnly: true,
 				sameSite: 'strict',
-				secure: false,	// TODO: set to true in production
+				secure: false, // TODO: set to true in production
 				maxAge: 60 * 60 * 24 * 30
 			});
 		} catch (e: any) {
 			return fail(400, {
-				error: e?.message ?? 'login error'
+				error: e?.message ?? 'Signin error'
 			});
 		}
 

@@ -49,9 +49,6 @@
 				<a class="md:p-4 py-2 block hover:text-purple-400" href="/signin">Signin</a>
 			</li>
 			<li>
-				<a class="md:p-4 py-2 block hover:text-purple-400" href="/confirm">Confirm</a>
-			</li>
-			<li>
 				<a class="md:p-4 py-2 block hover:text-purple-400 text-purple-500" href="/signup">Sign Up</a
 				>
 			</li>

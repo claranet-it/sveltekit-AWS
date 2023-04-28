@@ -1,5 +1,5 @@
 import { confirm } from '$lib/cognito';
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const actions = {
@@ -9,16 +9,11 @@ export const actions = {
 		const code = data.get('code') as string;
 
 		try {
-			const res = await confirm(email, code);
-
-			console.log(res, email, code);
-
-			return { success: true };
+			await confirm(email, code);
 		} catch (e: any) {
-			console.log(e);
-			return fail(400, { error: e?.message ?? 'error' });
+			return fail(400, { error: e?.message ?? 'Confirm error' });
 		}
 
-		return { success: true };
+		throw redirect(303, '/signin');
 	}
 } satisfies Actions;
