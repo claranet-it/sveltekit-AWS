@@ -7,6 +7,7 @@ declare global {
 			user: {
 				isAuthenticated: boolean;
 				email?: string;
+				fullName?: string;
 			};
 		}
 		// interface PageData {}

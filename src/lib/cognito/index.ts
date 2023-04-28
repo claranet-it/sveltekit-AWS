@@ -13,6 +13,11 @@ const poolData = {
 };
 const userPool = new CognitoUserPool(poolData);
 
+export type User = {
+	email: string;
+	fullName: string;
+}
+
 export async function signUp(email: string, name: string, password: string): Promise<boolean> {
 	return new Promise((resolve, reject) => {
 		userPool.signUp(
@@ -75,14 +80,17 @@ export async function signIn(email: string, password: string): Promise<string> {
 	});
 }
 
-export async function verifyIdToken(jwtToken: string): Promise<string> {
+export async function verifyIdToken(jwtToken: string): Promise<User> {
 	const verifier = CognitoJwtVerifier.create({
 		userPoolId: poolData.UserPoolId,
 		tokenUse: 'id',
 		clientId: poolData.ClientId
 	});
 
-	const payload = await verifier.verify(jwtToken);
+	const payload = await verifier.verify(jwtToken);	
 
-	return payload.email as string;
+	return {
+		email: payload.email as string,
+		fullName: payload.name as string
+	}
 }

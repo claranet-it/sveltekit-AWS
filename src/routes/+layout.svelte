@@ -1,8 +1,11 @@
-<script>
+<script lang="ts">
 	import Navbar from '../components/navbar/Navbar.svelte';
+	import type { LayoutServerData } from './$types';
+
+	export let data: LayoutServerData;
 </script>
 
-<Navbar />
+<Navbar email={data.session?.email} fullName={data.session?.fullName} isAuthenticated={data.session?.isAuthenticated ?? false} />
 
 <slot />
 

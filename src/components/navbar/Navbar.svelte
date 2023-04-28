@@ -1,8 +1,12 @@
-<script>
+<script lang="ts">
 	let clicked = false;
 	const handleClickMenu = () => {
 		clicked = !clicked;
 	};
+
+	export let email: string | undefined;
+	export let fullName: string | undefined;
+	export let isAuthenticated: boolean;
 </script>
 
 <nav
@@ -45,13 +49,25 @@
 	  md:justify-between
 	  md:pt-0"
 		>
-			<li>
-				<a class="md:p-4 py-2 block hover:text-purple-400" href="/signin">Signin</a>
-			</li>
-			<li>
-				<a class="md:p-4 py-2 block hover:text-purple-400 text-purple-500" href="/signup">Sign Up</a
-				>
-			</li>
+			{#if isAuthenticated}
+				<span>{fullName} - {email}</span>
+			{/if}
+
+			{#if isAuthenticated}
+				<li>
+					<a class="md:p-4 py-2 block hover:text-purple-400" href="/signout">Signout</a>
+				</li>
+			{:else}
+				<li>
+					<a class="md:p-4 py-2 block hover:text-purple-400" href="/signin">Signin</a>
+				</li>
+
+				<li>
+					<a class="md:p-4 py-2 block hover:text-purple-400 text-purple-500" href="/signup"
+						>Sign Up</a
+					>
+				</li>
+			{/if}
 		</ul>
 	</div>
 </nav>

@@ -7,10 +7,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 		const idToken = session as string;
 
 		try {
-			const email = await verifyIdToken(idToken);
+			const { email, fullName } = await verifyIdToken(idToken);
 			event.locals.user = {
 				isAuthenticated: true,
-				email
+				email,
+				fullName
 			};
 		} catch (err) {
 			event.locals.user = {
