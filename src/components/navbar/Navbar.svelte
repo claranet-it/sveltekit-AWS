@@ -3,9 +3,7 @@
 	const handleClickMenu = () => {
 		clicked = !clicked;
 	};
-
-	export let email: string | undefined;
-	export let fullName: string | undefined;
+	
 	export let isAuthenticated: boolean;
 </script>
 
@@ -49,10 +47,6 @@
 	  md:justify-between
 	  md:pt-0"
 		>
-			{#if isAuthenticated}
-				<span>{fullName} - {email}</span>
-			{/if}
-
 			{#if isAuthenticated}
 				<li>
 					<a class="md:p-4 py-2 block hover:text-purple-400" href="/signout">Signout</a>

@@ -5,7 +5,7 @@
 	export let data: LayoutServerData;
 </script>
 
-<Navbar email={data.session?.email} fullName={data.session?.fullName} isAuthenticated={data.session?.isAuthenticated ?? false} />
+<Navbar isAuthenticated={data.session?.isAuthenticated ?? false} />
 
 <slot />
 
