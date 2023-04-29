@@ -1,6 +1,5 @@
 <script lang="ts">
 	import AuthLayout from '../../components/auth-layout/AuthLayout.svelte';
-	import Avatar from '../../components/avatar/Avatar.svelte';
 	import Button from '../../components/button/Button.svelte';
 	import type { ActionData } from './$types';
 
