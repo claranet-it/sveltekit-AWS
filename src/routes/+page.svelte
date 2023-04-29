@@ -9,7 +9,7 @@
 		<div class="min-h-[24rem] max-w-6xl m-auto rounded-lg p-4 space-y-4">
 			<div class="min-h-screen flex flex-col justify-center items-center">
 				<div
-					class="relative flex flex-col items-center rounded-[20px] w-[400px] mx-auto p-8 bg-white bg-clip-border shadow-xl hover:shadow-2xl"
+					class="relative flex flex-col items-center rounded-[20px] w-[400px] sm:w-[500px] mx-auto p-8 bg-white bg-clip-border hover:shadow-2xl hover:shadow-orange-600"
 				>
 					<div class="relative flex h-32 w-full justify-center rounded-xl bg-cover">
 						<img
