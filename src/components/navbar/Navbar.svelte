@@ -1,61 +1,32 @@
-<script>
+<script lang="ts">
+	let clicked = false;
+	const handleClickMenu = () => {
+		clicked = !clicked;
+	};
 
-    let clicked = false
-    const handleClickMenu = () => {
-        clicked = !clicked
-    }
-
+	export let isAuthenticated: boolean;
 </script>
 
-<nav
-class="
-  flex flex-wrap
-  items-center
-  justify-between
-  w-full
-  py-4
-  md:py-0
-  px-4
-  text-lg text-gray-700
-  bg-white
-"
->
-<div>
-  <a href="/">
-    <img src="src/lib/images/svelte-logo.svg" alt="logo" class="h-8 w-8" />
-  </a>
-</div>
-
-<button on:click={handleClickMenu}>
-    <img src="src/lib/images/hamburger-menu.svg" alt="menu" class="h-6 w-6 cursor-pointer md:hidden block"/>
-</button>
-
-<div class="{clicked ? 'w-full md:flex md:items-center md:w-auto' : ' hidden w-full md:flex md:items-center md:w-auto'}">
-  <ul
-	class="
-	  pt-4
-	  text-base text-gray-700
-	  md:flex
-	  md:justify-between 
-	  md:pt-0"
-  >
-	<li>
-	  <a class="md:p-4 py-2 block hover:text-purple-400" href="/signin"
-		>Signin</a
-	  >
-	</li>
-	<li>
-	  <a class="md:p-4 py-2 block hover:text-purple-400" href="/confirm"
-		>Confirm</a
-	  >
-	</li>
-	<li>
-	  <a
-		class="md:p-4 py-2 block hover:text-purple-400 text-purple-500"
-		href="/signup"
-		>Sign Up</a
-	  >
-	</li>
-  </ul>
-</div>
+<nav class="h-[80px]">
+	<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 pt-10">
+		<div />
+		<a href="/" class="flex">
+			<img src="src/lib/images/svelte-logo.svg" alt="logo" class="h-14 w-14" />
+			<span class="text-white text-3xl sm:text-5xl font-bold ml-2 mt-2 sm:mt-1">
+				SvelteKit ❤️ AWS
+			</span>
+		</a>
+		<div>
+			{#if isAuthenticated}
+				<a href="/signout" class="bg-transparent pr-4">
+					<svg width="40" height="40" viewBox="0 0 20 18" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M15 4L13.59 5.41L16.17 8H6V10H16.17L13.59 12.58L15 14L20 9L15 4ZM2 2H10V0H2C0.9 0 0 0.9 0 2V16C0 17.1 0.9 18 2 18H10V16H2V2Z"
+							fill="white"
+						/>
+					</svg>
+				</a>
+			{/if}
+		</div>
+	</div>
 </nav>

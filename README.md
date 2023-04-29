@@ -43,11 +43,13 @@ You can preview the production build with `npm run preview`.
 - [x] SignIn
 - [x] SignUp
 - [x] Confirm account
-- [ ] Handle confirm account error on signIn
-- [ ] Redirect to confirm after signUp
-- [ ] Navigation
+- [x] Handle confirm account error on signIn
+- [x] Redirect to confirm after signUp
+- [x] Navigation
 - [x] Navbar
-- [ ] Authenticated Home Route
-- [ ] Logout
+- [x] Authenticated Home Route
+- [x] SignOut
 - [x] User pool
 - [x] Cognito Configuration
+- [ ] Unit Test
+- [ ] E2E Test

@@ -5,13 +5,20 @@ import {
 	CognitoUserPool
 } from 'amazon-cognito-identity-js';
 
+import { CognitoJwtVerifier } from 'aws-jwt-verify';
+
 const poolData = {
 	UserPoolId: 'eu-central-1_5BR44MzE3',
 	ClientId: 'mps7na95gtaacficrqg7nopv5'
 };
 const userPool = new CognitoUserPool(poolData);
 
-export async function signUp(email: string, name: string, password: string): Promise<void> {
+export type User = {
+	email: string;
+	fullName: string;
+}
+
+export async function signUp(email: string, name: string, password: string): Promise<boolean> {
 	return new Promise((resolve, reject) => {
 		userPool.signUp(
 			email,
@@ -27,7 +34,7 @@ export async function signUp(email: string, name: string, password: string): Pro
 				if (!result) {
 					reject(err);
 				} else {
-					resolve();
+					resolve(result.userConfirmed);
 				}
 			}
 		);
@@ -51,7 +58,7 @@ export async function confirm(email: string, code: string): Promise<void> {
 	});
 }
 
-export async function signIn(email: string, password: string): Promise<void> {
+export async function signIn(email: string, password: string): Promise<string> {
 	return new Promise((resolve, reject) => {
 		const authenticationDetails = new AuthenticationDetails({
 			Username: email,
@@ -64,12 +71,26 @@ export async function signIn(email: string, password: string): Promise<void> {
 		const cognitoUser = new CognitoUser(userData);
 		cognitoUser.authenticateUser(authenticationDetails, {
 			onSuccess: (result) => {
-				//console.log('Sign in success: ', result);
-				resolve();
+				resolve(result.getIdToken().getJwtToken());
 			},
 			onFailure: (err) => {
 				reject(err);
 			}
 		});
 	});
+}
+
+export async function verifyIdToken(jwtToken: string): Promise<User> {
+	const verifier = CognitoJwtVerifier.create({
+		userPoolId: poolData.UserPoolId,
+		tokenUse: 'id',
+		clientId: poolData.ClientId
+	});
+
+	const payload = await verifier.verify(jwtToken);	
+
+	return {
+		email: payload.email as string,
+		fullName: payload.name as string
+	}
 }

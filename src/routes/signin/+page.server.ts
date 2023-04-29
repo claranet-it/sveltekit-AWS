@@ -1,30 +1,29 @@
 import { signIn } from '$lib/cognito';
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const actions = {
 	signIn: async ({ request, cookies }) => {
 		const data = await request.formData();
-		console.log('*****Data: ', data);
 		const email = data.get('email') as string;
 		const password = data.get('password') as string;
 
 		try {
-			console.log('Trying to sign in');
-			await signIn(email, password);
+			const idToken = await signIn(email, password);
 
-			cookies.set('session', email, {
+			cookies.set('session', idToken, {
 				path: '/',
 				httpOnly: true,
 				sameSite: 'strict',
-				secure: false,
+				secure: false, // TODO: set to true in production
 				maxAge: 60 * 60 * 24 * 30
 			});
-
-			return { signin: true };
 		} catch (e: any) {
-			console.log('Error: ', e);
-			return fail(400, { error: e?.message ?? 'error' });
+			return fail(400, {
+				error: e?.message ?? 'Signin error'
+			});
 		}
+
+		throw redirect(303, '/');
 	}
 } satisfies Actions;

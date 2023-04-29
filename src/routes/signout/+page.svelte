@@ -1,8 +1,16 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import type { ActionData } from './$types';
+	import type { LayoutServerData } from '../$types';
+	import Button from '../../components/button/Button.svelte';
 
-	export let data: PageData;
+	export let form: ActionData;
+	export let data: LayoutServerData;
 </script>
+
+<svelte:head>
+	<title>SignOut</title>
+	<meta name="description" content="SignOut" />
+</svelte:head>
 
 {#if data.session?.isAuthenticated}
 	<div>
@@ -33,6 +41,12 @@
 							<span class="px-2">{data.session?.email}</span>
 						</div>
 					</div>
+					<form method="POST" action="?/signOut">
+						<Button className="w-[200px]">Confirm Sign out</Button>
+					</form>
+					{#if form?.error}
+						<div class="text-red-500 text-sm">{form.error}</div>
+					{/if}
 				</div>
 			</div>
 		</div>

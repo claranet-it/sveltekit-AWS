@@ -1,5 +1,5 @@
-import { signUp, confirm } from '$lib/cognito';
-import { fail } from '@sveltejs/kit';
+import { signUp } from '$lib/cognito';
+import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const actions = {
@@ -11,23 +11,18 @@ export const actions = {
 			password: data.get('password') as string
 		};
 
+		let userConfirmed = false;
 		try {
-			console.log('Trying to sign up');
-			signUp(user.email, user.name, user.password);
-			return { success: true };
-		} catch (e) {
-			return fail(400, { error: 'to confirm' });
+			userConfirmed = await signUp(user.email, user.name, user.password);
+		} catch (e: any) {
+			return fail(400, {
+				error: e?.message ?? 'Signup error'
+			});
 		}
-	},
-	confirm: async ({ request }) => {
-		const data = await request.formData();
-		const user = {
-			email: data.get('email') as string,
-			code: data.get('code') as string
-		};
 
-		confirm(user.email, user.code);
-
-		return fail(400, { error: 'confirm' });
+		if (!userConfirmed) {
+			throw redirect(303, '/confirm');
+		}
+		throw redirect(303, '/');
 	}
 } satisfies Actions;
