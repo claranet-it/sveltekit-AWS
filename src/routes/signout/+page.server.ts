@@ -1,5 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
+import type { LayoutServerLoad } from '../$types';
 
 export const actions = {
 	signOut: async ({ cookies }) => {
@@ -14,3 +15,13 @@ export const actions = {
 		throw redirect(303, '/');
 	}
 } satisfies Actions;
+
+export const load: LayoutServerLoad = async ({ locals, url }) => {
+	if (!locals.user) {
+		throw redirect(302, '/signin');
+	}
+
+	return {
+		session: locals.user
+	};
+};
