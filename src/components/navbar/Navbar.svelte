@@ -8,7 +8,7 @@
 </script>
 
 <nav class="h-[80px]">
-	<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 pt-10">
+	<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 		<div />
 		<a href="/" class="flex">
 			<img src="src/lib/images/svelte-logo.svg" alt="logo" class="h-14 w-14" />
