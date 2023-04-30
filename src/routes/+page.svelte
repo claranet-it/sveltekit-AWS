@@ -7,7 +7,7 @@
 {#if data.session?.isAuthenticated}
 	<div>
 		<div class="min-h-[24rem] max-w-6xl m-auto rounded-lg p-4 space-y-4">
-			<div class="min-h-screen flex flex-col justify-center items-center">
+			<div class="min-h-[38rem] flex flex-col justify-center items-center">
 				<div
 					class="relative flex flex-col items-center rounded-[20px] w-[400px] sm:w-[500px] mx-auto p-8 bg-white bg-clip-border hover:shadow-2xl hover:shadow-orange-600"
 				>
