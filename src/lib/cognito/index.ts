@@ -16,7 +16,7 @@ const userPool = new CognitoUserPool(poolData);
 export type User = {
 	email: string;
 	fullName: string;
-}
+};
 
 export async function signUp(email: string, name: string, password: string): Promise<boolean> {
 	return new Promise((resolve, reject) => {
@@ -87,10 +87,10 @@ export async function verifyIdToken(jwtToken: string): Promise<User> {
 		clientId: poolData.ClientId
 	});
 
-	const payload = await verifier.verify(jwtToken);	
+	const payload = await verifier.verify(jwtToken);
 
 	return {
 		email: payload.email as string,
 		fullName: payload.name as string
-	}
+	};
 }

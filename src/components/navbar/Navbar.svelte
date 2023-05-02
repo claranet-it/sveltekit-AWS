@@ -1,9 +1,4 @@
 <script lang="ts">
-	let clicked = false;
-	const handleClickMenu = () => {
-		clicked = !clicked;
-	};
-
 	export let isAuthenticated: boolean;
 </script>
 

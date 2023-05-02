@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Avatar from "../avatar/Avatar.svelte";
+	import Avatar from '../avatar/Avatar.svelte';
 	export let closeEyes = false;
 </script>
 
